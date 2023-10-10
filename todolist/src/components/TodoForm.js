@@ -17,6 +17,7 @@ export const TodoForm = ({addTodo}) => {
     };
     return(
         <form className= 'TodoForm' onSubmit = {handleSubmit} >
+            <h1 style={{color:'white',}}>Todo App</h1>
             <input type='text' className='todo-input' 
             placeholder='What is the task today ?'
             value= {value}

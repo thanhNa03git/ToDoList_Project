@@ -7,20 +7,27 @@ uuidv4();
 export const TodoWrapper = () => {
     const [todos, setTodos] = useState([]);
     
-    const addTodo = (todo) => {
+    const addTodo = todo => {
         setTodos([
             ...todos,
-            { id: uuidv4(), task: todo, completed: false, isEditting: false },
+            { id: uuidv4(), task: todo, completed: false, isEditing: false },
         ]);
-        console.log("show todo:",todos);
-};
+        console.log("show todo:", todos);
+    };
+
+    const convertComplete = id => {
+        setTodos(todos.map(todo => todo.id === id ? {
+            ...todo, completed: !todo.completed} : todo))
+            console.log("convertComplete", setTodos);
+    }
 
     return (
         <div className="TodoWrapper">
             <TodoForm addTodo={addTodo} />
             
             {todos.map((todo,index) => (
-                <Todo task={todo} key={index}/>
+                <Todo task={todo} key={index}
+                convertComplete={convertComplete}/>
             ))}
         
         </div>

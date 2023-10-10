@@ -4,10 +4,11 @@ import{faTrash}  from '@fortawesome/free-solid-svg-icons'
 import{faPenToSquare}  from '@fortawesome/free-solid-svg-icons'
 
 
-export const Todo = ({task}) => {
+export const Todo = ({task, convertComplete}) => {
     return(
         <div className='Todo'>
-            <p>{task.task}</p>
+            <p onClick={() => convertComplete(task.id)} 
+                className={`${task.completed ? 'completed': ''}`}>{task.task}</p>
             <div>
                 <FontAwesomeIcon icon={faPenToSquare} />
                 <FontAwesomeIcon icon={faTrash} />
